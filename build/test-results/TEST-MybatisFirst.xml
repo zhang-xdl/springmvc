@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MybatisFirst" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-02-28T11:19:07" hostname="DESKTOP-73TGTO2" time="2.137">
+  <properties/>
+  <testcase name="testIncrement" classname="MybatisFirst" time="2.137"/>
+  <system-out><![CDATA[INFO  - ultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+INFO  - ultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@75d52c4c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7e4f6e03, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@10bfc7be, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1ed29389, org.springframework.test.context.transaction.TransactionalTestExecutionListener@12d4172e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@223dd6aa]
+INFO  - XmlBeanDefinitionReader    - Loading XML bean definitions from URL [file:src/main/webapp/WEB-INF/applicationContext.xml]
+INFO  - GenericApplicationContext  - Refreshing org.springframework.context.support.GenericApplicationContext@58d3612a: startup date [Tue Feb 28 19:19:05 CST 2017]; root of context hierarchy
+INFO  - urcesPlaceholderConfigurer - Loading properties file from file [E:\Ideaworkspace\springMVC\build\resources\main\jdbc.properties]
+INFO  - urcesPlaceholderConfigurer - Loading properties file from file [E:\Ideaworkspace\springMVC\build\resources\main\log4j.properties]
+INFO  - urcesPlaceholderConfigurer - Loading properties file from file [E:\Ideaworkspace\springMVC\build\resources\main\redis.properties]
+INFO  - MLog                       - MLog clients using log4j logging.
+INFO  - C3P0Registry               - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+20
+22
+22.0
+2SEN 后22
+delete 2 22
+delete 1 null
+boundValueOps-----------
+22222222222222
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
