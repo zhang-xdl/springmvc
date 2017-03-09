@@ -77,17 +77,9 @@ public class MybatisFirst {
         if(userList!=null &&userList.size()>0){
             for(User user : userList){
                 System.out.println(user);
-                Double score = new Double(user.getId());
-
-                zSetOperations.add("userList", user, score);
+                zSetOperations.add("userList", user, Double.valueOf(user.getId()));
             }
             System.out.println("redis-----------------------------------");
-//            ValueOperations<String, Object> value = redisTemplate.opsForValue();
-//            value.set("userList", userList);
-//            List<User> objectList = (List<User>) value.get("userList");
-//            for (User u : objectList){
-//                System.out.println(u);
-//            }
             Set<Object> userSet=zSetOperations.rangeByScore("userList", 0, 10);
             System.out.println(userSet);
             System.out.println("倒序-----------------------------------");
