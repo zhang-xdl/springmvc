@@ -76,7 +76,7 @@ public class MybatisFirst {
         redisTemplate.delete("userList");
         if(userList!=null &&userList.size()>0){
             for(User user : userList){
-                System.out.println(user);
+//                System.out.println(user);
                 zSetOperations.add("userList", user, Double.valueOf(user.getId()));
             }
             System.out.println("redis-----------------------------------");
