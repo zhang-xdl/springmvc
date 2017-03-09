@@ -15,11 +15,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * Created by zhangzhaowen on 2016/7/26.23:28
@@ -74,20 +71,35 @@ public class MybatisFirst {
 
     @Test
     public void testGetUserList() {
+        ZSetOperations<String,Object> zSetOperations = redisTemplate.opsForZSet();
         List<User> userList = UserDaoImpl.getUserList();
+        redisTemplate.delete("userList");
         if(userList!=null &&userList.size()>0){
             for(User user : userList){
                 System.out.println(user);
+                Double score = new Double(user.getId());
+
+                zSetOperations.add("userList", user, score);
             }
             System.out.println("redis-----------------------------------");
-            ValueOperations<String, Object> value = redisTemplate.opsForValue();
-            value.set("userList", userList);
-            List<Object> objectList = (List<Object>) value.get("userList");
-            for (Object o : objectList){
-                System.out.println(o);
-            }
-
+//            ValueOperations<String, Object> value = redisTemplate.opsForValue();
+//            value.set("userList", userList);
+//            List<User> objectList = (List<User>) value.get("userList");
+//            for (User u : objectList){
+//                System.out.println(u);
+//            }
+            Set<Object> userSet=zSetOperations.rangeByScore("userList", 0, 10);
+            System.out.println(userSet);
+            System.out.println("倒序-----------------------------------");
+            Set<Object> userSet1=zSetOperations.reverseRangeByScore("userList", 0, 10);
+            System.out.println(userSet1);
         }
+    }
+
+
+    @Test
+    public void testRedisZet(){
+
     }
 
     @Test
@@ -138,6 +150,60 @@ public class MybatisFirst {
 
 
 
+    }
+
+
+
+    @Test
+    public void cas()  {
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        List<Object> txResults = redisTemplate.execute(new SessionCallback<List<Object>>() {
+            public List<Object> execute(RedisOperations operations) throws DataAccessException {
+                operations.multi();
+                operations.opsForValue().set("test_long", "1");
+//                if(true){
+//                    throw new RuntimeException();
+//                }
+                operations.opsForValue().increment("test_long", 1);
+                // This will contain the results of all ops in the transaction
+                return operations.exec();
+            }
+        });
+        System.out.println(txResults.size());
+        System.out.println("Number of items added to set: " + txResults.get(0));
+//        System.out.println("Number of items added to set: " + txResults.get(0));
+//        final String key = "test-cas-1";
+//        ValueOperations<String, Object> strOps = redisTemplate.opsForValue();
+//        redisTemplate.setEnableTransactionSupport(true);
+//        strOps.set(key, "hello");
+//        ExecutorService pool  = Executors.newCachedThreadPool();
+//        List<Callable<Object>> tasks = new ArrayList<>();
+//        for(int i=0;i<5;i++){
+//            final int idx = i;
+//            tasks.add(new Callable() {
+//                @Override
+//                public Object call() throws Exception {
+//                    return redisTemplate.execute(new SessionCallback() {
+//                        @Override
+//                        public Object execute(RedisOperations operations) throws DataAccessException {
+//                            operations.watch(key);
+//                            String origin = (String) operations.opsForValue().get(key);
+//                            operations.multi();
+//                            operations.opsForValue().set(key, origin + idx);
+//                            Object rs = operations.exec();
+//                            System.out.println("set:"+origin+idx+" rs:"+rs);
+//                            return rs;
+//                        }
+//                    });
+//                }
+//            });
+//        }
+//        List<Future<Object>> futures = pool.invokeAll(tasks);
+//        for(Future<Object> f:futures){
+//            System.out.println(f.get());
+//        }
+//        pool.shutdown();
+//        pool.awaitTermination(1000, TimeUnit.MILLISECONDS);
     }
 //    @Test
     public long getIncrValue(final String key) {
