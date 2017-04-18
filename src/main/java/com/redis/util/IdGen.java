@@ -1,4 +1,4 @@
-package com.zhangzhaowen.util;
+package com.redis.util;
 
 import java.util.Random;
 import java.util.UUID;

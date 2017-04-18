@@ -1,9 +1,9 @@
-package com.zhangzhaowen.domain;
+package com.redis.domain;
 
 import java.io.Serializable;
 
 /**
- * Created by zhangzhaowen on 2016/7/12.9:43
+ * Created by redis on 2016/7/12.9:43
  * Describe:
  */
 public class User  implements java.io.Serializable{

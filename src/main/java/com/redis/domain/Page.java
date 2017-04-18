@@ -1,4 +1,4 @@
-package com.zhangzhaowen.domain;
+package com.redis.domain;
 
 
 import java.io.Serializable;
@@ -9,19 +9,19 @@ import java.util.List;
 public class Page implements Serializable{
 
 	private static final long serialVersionUID = 4986247063453908308L;
-	private int showCount; //Ã¿Ò³ÏÔÊ¾¼ÇÂ¼Êý
-	private int totalPage;		//×ÜÒ³Êý
-	private int totalResult;	//×Ü¼ÇÂ¼Êý
-	private int currentPage;	//µ±Ç°Ò³
-	private int currentResult;	//µ±Ç°¼ÇÂ¼ÆðÊ¼Ë÷Òý
-	private boolean entityOrField;	//true:ÐèÒª·ÖÒ³µÄµØ·½£¬´«ÈëµÄ²ÎÊý¾ÍÊÇPageÊµÌå£»false:ÐèÒª·ÖÒ³µÄµØ·½£¬´«ÈëµÄ²ÎÊýËù´ú±íµÄÊµÌåÓµÓÐPageÊôÐÔ
-	private String pageStr;		//×îÖÕÒ³ÃæÏÔÊ¾µÄµ×²¿·­Ò³µ¼º½£¬ÏêÏ¸¼û£ºgetPageStr();
+	private int showCount; //Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½Â¼ï¿½ï¿½
+	private int totalPage;		//ï¿½ï¿½Ò³ï¿½ï¿½
+	private int totalResult;	//ï¿½Ü¼ï¿½Â¼ï¿½ï¿½
+	private int currentPage;	//ï¿½ï¿½Ç°Ò³
+	private int currentResult;	//ï¿½ï¿½Ç°ï¿½ï¿½Â¼ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+	private boolean entityOrField;	//true:ï¿½ï¿½Òªï¿½ï¿½Ò³ï¿½ÄµØ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PageÊµï¿½å£»false:ï¿½ï¿½Òªï¿½ï¿½Ò³ï¿½ÄµØ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Óµï¿½ï¿½Pageï¿½ï¿½ï¿½ï¿½
+	private String pageStr;		//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Äµ×²ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½getPageStr();
 	//	private PageData pd = new PageData();
-	private int prePage;//ÉÏÒ»Ò³
-	private int nextPage;//ÏÂÒ»Ò³
-	private boolean hasPre;//ÊÇ·ñÓÐÉÏÒ»Ò³
-	private boolean hasNext;//ÊÇ·ñÓÐÏÂÒ»Ò³
-	private List result;//·µ»Ø½á¹û
+	private int prePage;//ï¿½ï¿½Ò»Ò³
+	private int nextPage;//ï¿½ï¿½Ò»Ò³
+	private boolean hasPre;//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
+	private boolean hasNext;//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
+	private List result;//ï¿½ï¿½ï¿½Ø½ï¿½ï¿½
 	private List<String> childOrganIds = new ArrayList<String>();
 	private List<String> companyStates = new ArrayList<String>();
 	private List<String> companyTypes = new ArrayList<String>();
@@ -37,15 +37,15 @@ public class Page implements Serializable{
 		super();
 		this.currentPage = (currentPage<1)?1:currentPage;
 		this.showCount = showCount;
-		//ÊÇ·ñÓÐÉÏÒ»Ò³
+		//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
 		this.hasPre = (currentPage==1)?false:true;
-		//ÊÇ·ñÓÐÏÂÒ»Ò³
+		//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
 		this.hasNext = (currentPage==totalPage)?false:true;
-		//ÉÏÒ»Ò³
+		//ï¿½ï¿½Ò»Ò³
 		if(hasPre){
 			this.prePage = (currentPage-1);
 		}
-		//ÏÂÒ»Ò³
+		//ï¿½ï¿½Ò»Ò³
 		if(hasNext){
 			this.nextPage = currentPage+1;
 		}
@@ -56,21 +56,21 @@ public class Page implements Serializable{
 		this.currentPage = (currentPage<1)?1:currentPage;
 		this.showCount = showCount;
 		this.totalResult = totalResult;
-		//¼ÆËã×ÜÒ³Êý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 		if(totalResult==0){
 			this.totalPage = 0;
 		}else{
 			this.totalPage = (totalResult%showCount==0)?(totalResult/showCount):(totalResult/showCount+1);
 		}
-		//ÊÇ·ñÓÐÉÏÒ»Ò³
+		//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
 		this.hasPre = (currentPage==1)?false:true;
-		//ÊÇ·ñÓÐÏÂÒ»Ò³
+		//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³
 		this.hasNext = (currentPage==totalPage)?false:true;
-		//ÉÏÒ»Ò³
+		//ï¿½ï¿½Ò»Ò³
 		if(hasPre){
 			this.prePage = (currentPage-1);
 		}
-		//ÏÂÒ»Ò³
+		//ï¿½ï¿½Ò»Ò³
 		if(hasNext){
 			this.nextPage = currentPage+1;
 		}
@@ -122,19 +122,19 @@ public class Page implements Serializable{
 		if(totalResult>0){
 			sb.append("	<ul>\n");
 			if(currentPage==1){
-				sb.append("	<li><a>¹²<font color=red>"+totalResult+"</font>Ìõ</a></li>\n");
-				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"Ò³Âë\"/></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">Ìø×ª</a></li>\n");
-				sb.append("	<li><a>Ê×Ò³</a></li>\n");
-				sb.append("	<li><a>ÉÏÒ³</a></li>\n");
+				sb.append("	<li><a>ï¿½ï¿½<font color=red>"+totalResult+"</font>ï¿½ï¿½</a></li>\n");
+				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"Ò³ï¿½ï¿½\"/></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">ï¿½ï¿½×ª</a></li>\n");
+				sb.append("	<li><a>ï¿½ï¿½Ò³</a></li>\n");
+				sb.append("	<li><a>ï¿½ï¿½Ò³</a></li>\n");
 			}else{
-				sb.append("	<li><a>¹²<font color=red>"+totalResult+"</font>Ìõ</a></li>\n");
-				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"Ò³Âë\"/></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">Ìø×ª</a></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(1)\">Ê×Ò³</a></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage("+(currentPage-1)+")\">ÉÏÒ³</a></li>\n");
+				sb.append("	<li><a>ï¿½ï¿½<font color=red>"+totalResult+"</font>ï¿½ï¿½</a></li>\n");
+				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"Ò³ï¿½ï¿½\"/></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">ï¿½ï¿½×ª</a></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(1)\">ï¿½ï¿½Ò³</a></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage("+(currentPage-1)+")\">ï¿½ï¿½Ò³</a></li>\n");
 			}
-			int showTag = 5;//·ÖÒ³±êÇ©ÏÔÊ¾ÊýÁ¿
+			int showTag = 5;//ï¿½ï¿½Ò³ï¿½ï¿½Ç©ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 			int startTag = 1;
 			if(currentPage>showTag){
 				startTag = currentPage-1;
@@ -147,17 +147,17 @@ public class Page implements Serializable{
 					sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage("+i+")\">"+i+"</a></li>\n");
 			}
 			if(currentPage==totalPage){
-				sb.append("	<li><a>ÏÂÒ³</a></li>\n");
+				sb.append("	<li><a>ï¿½ï¿½Ò³</a></li>\n");
 				sb.append("	<li><a>Î²Ò³</a></li>\n");
 			}else{
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage("+(currentPage+1)+")\">ÏÂÒ³</a></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage("+(currentPage+1)+")\">ï¿½ï¿½Ò³</a></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage("+totalPage+")\">Î²Ò³</a></li>\n");
 			}
-			sb.append("	<li><a>µÚ"+currentPage+"Ò³</a></li>\n");
-			sb.append("	<li><a>¹²"+totalPage+"Ò³</a></li>\n");
+			sb.append("	<li><a>ï¿½ï¿½"+currentPage+"Ò³</a></li>\n");
+			sb.append("	<li><a>ï¿½ï¿½"+totalPage+"Ò³</a></li>\n");
 
 
-			sb.append("	<li><select title='ÏÔÊ¾ÌõÊý' style=\"width:55px;float:left;\" onchange=\"changeCount(this.value)\">\n");
+			sb.append("	<li><select title='ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½' style=\"width:55px;float:left;\" onchange=\"changeCount(this.value)\">\n");
 			sb.append("	<option value='"+showCount+"'>"+showCount+"</option>\n");
 			sb.append("	<option value='10'>10</option>\n");
 			sb.append("	<option value='20'>20</option>\n");
@@ -177,7 +177,7 @@ public class Page implements Serializable{
 			sb.append("</ul>\n");
 			sb.append("<script type=\"text/javascript\">\n");
 
-			//»»Ò³º¯Êý
+			//ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
 			sb.append("function nextPage(page){");
 			sb.append("	if(true && document.forms[0]){\n");
 			sb.append("		var url = document.forms[0].getAttribute(\"action\");\n");
@@ -201,7 +201,7 @@ public class Page implements Serializable{
 			sb.append("	}\n");
 			sb.append("}\n");
 
-			//µ÷ÕûÃ¿Ò³ÏÔÊ¾ÌõÊý
+			//ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 			sb.append("function changeCount(value){");
 			sb.append("	if(true && document.forms[0]){\n");
 			sb.append("		var url = document.forms[0].getAttribute(\"action\");\n");
@@ -225,7 +225,7 @@ public class Page implements Serializable{
 			sb.append("	}\n");
 			sb.append("}\n");
 
-			//Ìø×ªº¯Êý
+			//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½
 			sb.append("function toTZ(){");
 			sb.append("var toPaggeVlue = document.getElementById(\"toGoPage\").value;");
 			sb.append("if(toPaggeVlue == ''){document.getElementById(\"toGoPage\").value=1;return;}");

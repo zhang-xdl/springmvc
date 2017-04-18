@@ -1,7 +1,7 @@
-package com.zhangzhaowen.redis.inf;
+package com.redis.redis.inf;
 
 /**
- * Created by zhangzhaowen on 2017/2/24.
+ * Created by redis on 2017/2/24.
  * Description
  */
 public interface RedisCache {

@@ -1,11 +1,11 @@
-package com.zhangzhaowen.dao.inf;
+package com.redis.dao.inf;
 
-import com.zhangzhaowen.domain.User;
+import com.redis.domain.User;
 
 import java.util.List;
 
 /**
- * Created by zhangzhaowen on 2016/7/27.23:33
+ * Created by redis on 2016/7/27.23:33
  * Describe:
  */
 public interface UserDao {
@@ -17,7 +17,7 @@ public interface UserDao {
    void insertUser(User user);
 
     /*
-    * created by zhangzhaowen on 2017/2/24
+    * created by redis on 2017/2/24
     * description
     * @param
     */

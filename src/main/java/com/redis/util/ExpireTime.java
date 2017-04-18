@@ -1,7 +1,7 @@
-package com.zhangzhaowen.util;
+package com.redis.util;
 
 /**
- * Created by zhangzhaowen on 2017/2/27.
+ * Created by redis on 2017/2/27.
  * Description
  */
 public enum ExpireTime {

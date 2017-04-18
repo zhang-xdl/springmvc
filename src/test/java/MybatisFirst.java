@@ -1,6 +1,6 @@
-import com.zhangzhaowen.dao.impl.UserDaoImpl;
-import com.zhangzhaowen.domain.User;
-import com.zhangzhaowen.util.CacheUtils;
+import com.redis.dao.impl.UserDaoImpl;
+import com.redis.domain.User;
+import com.redis.util.CacheUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * Created by zhangzhaowen on 2016/7/26.23:28
+ * Created by redis on 2016/7/26.23:28
  * Describe:
  */
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -1,7 +1,7 @@
-package com.zhangzhaowen.dao.impl;
+package com.redis.dao.impl;
 
-import com.zhangzhaowen.dao.inf.UserDao;
-import com.zhangzhaowen.domain.User;
+import com.redis.dao.inf.UserDao;
+import com.redis.domain.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by zhangzhaowen on 2016/7/27.23:35
+ * Created by redis on 2016/7/27.23:35
  * Describe:
  */
 @Repository
@@ -34,13 +34,13 @@ public class UserDaoImpl implements UserDao {
         //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //返回结果集
-        return sqlSession.selectOne("com.zhangzhaowen.dao.inf.UserMapper.findUserById", userId);
+        return sqlSession.selectOne("com.redis.dao.inf.UserMapper.findUserById", userId);
     }
 
     @Override
     public User findUsersByName(String username) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        return sqlSession.selectOne("com.zhangzhaowen.dao.inf.UserMapper.findUsersByName", username);
+        return sqlSession.selectOne("com.redis.dao.inf.UserMapper.findUsersByName", username);
     }
 
     @Override
@@ -48,13 +48,13 @@ public class UserDaoImpl implements UserDao {
 
         //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        sqlSession.insert("com.zhangzhaowen.dao.inf.UserMapper.insertUser", user);
+        sqlSession.insert("com.redis.dao.inf.UserMapper.insertUser", user);
     }
 
     @Override
     public List<User> getUserList() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        return sqlSession.selectList("com.zhangzhaowen.dao.inf.UserMapper.getUserList");
+        return sqlSession.selectList("com.redis.dao.inf.UserMapper.getUserList");
     }
 
 

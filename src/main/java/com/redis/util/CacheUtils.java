@@ -1,4 +1,4 @@
-package com.zhangzhaowen.util;
+package com.redis.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by zhangzhaowen on 2017/2/27.
+ * Created by redis on 2017/2/27.
  * Description
  */
 public class CacheUtils {

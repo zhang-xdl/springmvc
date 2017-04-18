@@ -11,9 +11,9 @@
         </settings>
 
         <typeAliases>
-                <package name="com.zhangzhaowen.domain"/>
+                <package name="com.redis.domain"/>
                 <!-- 分页 -->
-                <!--<typeAlias type="com.zhangzhaowen.entity.Page" alias="Page"/>-->
+                <!--<typeAlias type="com.redis.entity.Page" alias="Page"/>-->
         </typeAliases>
 
 
