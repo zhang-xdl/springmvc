@@ -77,7 +77,8 @@ public class MybatisFirst {
         if(userList!=null &&userList.size()>0){
             for(User user : userList){
 //                System.out.println(user);
-                zSetOperations.add("userList", user, Double.valueOf(user.getId()));
+                boolean flag = zSetOperations.add("userList", user, Double.valueOf(user.getId()));
+                System.out.println("-------"+flag);
             }
             System.out.println("redis-----------------------------------");
             Set<Object> userSet=zSetOperations.rangeByScore("userList", 0, 10);
@@ -91,7 +92,10 @@ public class MybatisFirst {
 
     @Test
     public void testRedisZet(){
-
+        ZSetOperations<String,Object> zSetOperations = redisTemplate.opsForZSet();
+        System.out.println("倒序-----------------------------------");
+        Set<Object> userSet1=zSetOperations.reverseRangeByScore("userList", 10, 13);
+        System.out.println(userSet1);
     }
 
     @Test
