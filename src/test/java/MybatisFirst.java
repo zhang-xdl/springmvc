@@ -94,7 +94,7 @@ public class MybatisFirst {
     public void testRedisZet(){
         ZSetOperations<String,Object> zSetOperations = redisTemplate.opsForZSet();
         System.out.println("倒序-----------------------------------");
-        Set<Object> userSet1=zSetOperations.reverseRangeByScore("userList", 10, 13);
+        Set<Object> userSet1=zSetOperations.reverseRangeByScore("userList", 0, 13);
         System.out.println(userSet1);
     }
 
