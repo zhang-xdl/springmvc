@@ -1,4 +1,4 @@
-package com.zhangzhaowen.util;
+package com.redis.util;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.TimeZone;
 
 /**
- * Created by zhangzhaowen on 2017/2/27.
+ * Created by redis on 2017/2/27.
  * Description
  */
 public class JsonMapper extends ObjectMapper{

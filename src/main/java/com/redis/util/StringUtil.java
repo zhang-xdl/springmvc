@@ -1,4 +1,4 @@
-package com.zhangzhaowen.util;
+package com.redis.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

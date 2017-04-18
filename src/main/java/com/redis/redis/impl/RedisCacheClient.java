@@ -1,11 +1,11 @@
-package com.zhangzhaowen.redis.impl;
+package com.redis.redis.impl;
 
-import com.zhangzhaowen.redis.inf.RedisCache;
+import com.redis.redis.inf.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 /**
- * Created by zhangzhaowen on 2017/2/24.
+ * Created by redis on 2017/2/24.
  * Description
  */
 public class RedisCacheClient implements RedisCache{

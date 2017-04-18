@@ -1,4 +1,4 @@
-package com.zhangzhaowen.util;
+package com.redis.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
