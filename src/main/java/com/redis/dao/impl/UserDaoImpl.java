@@ -34,13 +34,13 @@ public class UserDaoImpl implements UserDao {
         //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //返回结果集
-        return sqlSession.selectOne("com.redis.dao.inf.UserMapper.findUserById", userId);
+        return sqlSession.selectOne("UserMapper.findUserById", userId);
     }
 
     @Override
     public User findUsersByName(String username) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        return sqlSession.selectOne("com.redis.dao.inf.UserMapper.findUsersByName", username);
+        return sqlSession.selectOne("UserMapper.findUsersByName", username);
     }
 
     @Override
@@ -48,13 +48,13 @@ public class UserDaoImpl implements UserDao {
 
         //通过工厂，在方法内部获取SqlSession，这样就可以避免线程不安全
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        sqlSession.insert("com.redis.dao.inf.UserMapper.insertUser", user);
+        sqlSession.insert("UserMapper.insertUser", user);
     }
 
     @Override
     public List<User> getUserList() {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        return sqlSession.selectList("com.redis.dao.inf.UserMapper.getUserList");
+        return sqlSession.selectList("UserMapper.getUserList");
     }
 
 

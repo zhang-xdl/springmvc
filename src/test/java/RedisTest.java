@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -137,5 +138,32 @@ public class RedisTest {
         size = listOperations.size("List");
         System.out.println("List size is " + size);
     }
+
+    /****Redis set test start***/
+    @Test
+    public void redisSetTest(){
+        //获得用户列表 将用户名加入到Redis set 中
+        List<User> userList = UserDaoImpl.getUserList();
+        SetOperations setOperations =  redisTemplate.opsForSet();
+        setOperations.pop("userName");
+        if (userList!=null &&userList.size()>0) {
+            for(User u :userList){
+                setOperations.add("userName",u.getRealName());
+            }
+        }
+        //set 大小
+        Long size = setOperations.size("userName");
+        System.out.println("Set size is " + size);
+        Set<String> userNameSet = setOperations.members("userName");
+        System.out.println("Set members are "+userNameSet);
+        List<String> userNameList =   setOperations.randomMembers("userName", 3);
+        System.out.println(userNameList);
+
+//        Set<String> userNameList1 = (Set<String>) setOperations.randomMember("userName");
+        System.out.println(setOperations.randomMember("userName"));
+    }
+
+    /****Redis set test end***/
+
 
 }
